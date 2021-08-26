@@ -15,6 +15,6 @@ resource "aws_db_instance" "default" {
 
 resource "null_resource" "update_password" {
   provisioner "local-exec" {
-    command = "python3 update_password.py --db_identifier=${aws_db_instance.default.identifier}"
+    command = "python3 update_password.py --db_identifier=${aws_db_instance.default.identifier} --region=${var.region}"
   }
 }
