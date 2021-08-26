@@ -32,7 +32,7 @@ response = rds.modify_db_instance(DBInstanceIdentifier=db_id, MasterUserPassword
 if response:
     print(f"Updated RDS password for {db_id}")
 
-ssm = boto3.client('ssm')
+ssm = boto3.client('ssm', region_name=region)
 ssm.put_parameter(
     Name=secret_name,
     Description=f'DB Password for {db_id}',
